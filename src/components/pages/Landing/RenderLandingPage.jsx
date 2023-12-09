@@ -1,8 +1,8 @@
 import React from 'react';
 // ADD IMPORTS BACK FOR GRAPHS SECTION
-// import GrantRatesByOfficeImg from '../../../styles/Images/bar-graph-no-text.png';
-// import GrantRatesByNationalityImg from '../../../styles/Images/pie-chart-no-text.png';
-// import GrantRatesOverTimeImg from '../../../styles/Images/line-graph-no-text.png';
+import GrantRatesByOfficeImg from '../../../styles/Images/bar-graph-no-text.png';
+import GrantRatesByNationalityImg from '../../../styles/Images/pie-chart-no-text.png';
+import GrantRatesOverTimeImg from '../../../styles/Images/line-graph-no-text.png';
 import HrfPhoto from '../../../styles/Images/paper-stack.jpg';
 import '../../../styles/RenderLandingPage.less';
 import { Button } from 'antd';
@@ -24,15 +24,31 @@ function RenderLandingPage(props) {
         <div className="header-text-container">
           <h1>Asylum Office Grant Rate Tracker</h1>
           <h3>
-            The Asylum Office Grant Rate Tracker provides asylum seekers,
-            researchers, policymakers, and the public an interactive tool to
+            The Asylum Office Grant Rate Tracker provides asylum seekers,o
+            researchers, policymakers, and the public an interactive tool t
             explore USCIS data on Asylum Office decisions
           </h3>
         </div>
       </div>
 
       {/* Graphs Section: Add code here for the graphs section for your first ticket */}
-      {/* <div className="graphs-section"> */}
+      <div className="graphs-section">
+        <div className="graph-image">
+          <img src={GrantRatesByOfficeImg} alt="Search Grant Rates By Office" />
+          <h3>Search Grant Rates By Office</h3>
+        </div>
+        <div className="graph-image">
+          <img
+            src={GrantRatesByNationalityImg}
+            alt="Search Grant Rates By Nationality"
+          />
+          <h3>Search Grant Rates By Nationality</h3>
+        </div>
+        <div className="graph-image">
+          <img src={GrantRatesOverTimeImg} alt="Search Grant Rates Over Time" />
+          <h3>Search Grant Rates Over Time</h3>
+        </div>
+      </div>
       <div className="view-more-data-btn-container">
         <Button
           type="default"
@@ -40,6 +56,13 @@ function RenderLandingPage(props) {
           onClick={() => history.push('/graphs')}
         >
           View the Data
+        </Button>
+        <Button
+          type="default"
+          style={{ backgroundColor: '#404C4A', color: '#FFFFFF' }}
+          onClick={() => history.push('/graphs')}
+        >
+          Download the Data
         </Button>
       </div>
 
