@@ -63,7 +63,6 @@ function RenderLandingPage(props) {
           <Button
             type="default"
             style={{ backgroundColor: '#404C4A', color: '#FFFFFF' }}
-            onClick={() => history.push('/graphs')}
           >
             Download the Data
           </Button>
@@ -90,7 +89,7 @@ function RenderLandingPage(props) {
         <div className="bottom-section">
           <h2>Systemic Disparity Insights</h2>
           <div className="bottom-section-stats">
-            <div>
+            <div className="bottom-stat">
               <h3>36%</h3>
               <p>
                 By the end of the Trump adminstration, the average asylum office
@@ -98,16 +97,29 @@ function RenderLandingPage(props) {
                 in fiscal year 2016 to 28 percent in fiscal year 2020.
               </p>
             </div>
-            <div>
+            <div className="bottom-stat">
               <h3>5%</h3>
               <p>
                 The New York asylum office grant rate dropped to 5 percent in
                 fiscal year 2020.
               </p>
             </div>
-            <div>
+            <div className="bottom-stat">
               <h3>6x Lower</h3>
+              <p>
+                Between fiscal year 2017 and 2020, the New York asylum office's
+                average grant rate was six times lower than the San Francisco
+                asylum office.
+              </p>
             </div>
+          </div>
+          <div className="read-more-btn">
+            <Button
+              type="default"
+              style={{ backgroundColor: '#404C4A', color: '#FFFFFF' }}
+            >
+              Read More
+            </Button>
           </div>
         </div>
         <p onClick={() => scrollToTop()} className="back-to-top">
