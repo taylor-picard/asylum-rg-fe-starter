@@ -30,8 +30,6 @@ function RenderLandingPage(props) {
           </h3>
         </div>
       </div>
-
-      {/* Graphs Section: Add code here for the graphs section for your first ticket */}
       <div className="graphs-section">
         <div className="graph-image">
           <img src={GrantRatesByOfficeImg} alt="Search Grant Rates By Office" />
@@ -85,7 +83,6 @@ function RenderLandingPage(props) {
         </div>
       </div>
       <div>
-        {/* Bottom Section: Add code here for the graphs section for your first ticket */}
         <div className="bottom-section">
           <h2>Systemic Disparity Insights</h2>
           <div className="bottom-section-stats">
