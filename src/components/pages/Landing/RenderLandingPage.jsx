@@ -24,8 +24,8 @@ function RenderLandingPage(props) {
         <div className="header-text-container">
           <h1>Asylum Office Grant Rate Tracker</h1>
           <h3>
-            The Asylum Office Grant Rate Tracker provides asylum seekers,o
-            researchers, policymakers, and the public an interactive tool t
+            The Asylum Office Grant Rate Tracker provides asylum seekers,
+            researchers, policymakers, and the public an interactive tool to
             explore USCIS data on Asylum Office decisions
           </h3>
         </div>
