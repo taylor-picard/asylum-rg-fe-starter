@@ -17,7 +17,7 @@ import ScrollToTopOnMount from '../../../utils/scrollToTopOnMount';
 const { background_color } = colors;
 const real_URLs = [
   `https://hrf-asylum-be-b.herokuapp.com/cases/fiscalSummary`,
-  `https://hrf-asylum-be-b.herokuapp.com/casescitizenshipSummary`,
+  `https://hrf-asylum-be-b.herokuapp.com/cases/citizenshipSummary`,
 ];
 
 function GraphWrapper(props) {
@@ -76,43 +76,57 @@ function GraphWrapper(props) {
                                    -- Mack 
     
     */
-    function getAllData(URLs) {
+    async function getAllData(URLs) {
       return Promise.all(URLs.map(fetchData));
     }
 
     function fetchData(URL) {
-      if (office === 'all' || !office) {
-        return axios
-          .get(URL, {
-            // mock URL, can be simply replaced by `${Real_Production_URL}/summary` in prod!
-            params: {
-              from: years[0],
-              to: years[1],
-            },
-          })
-          .then(result => {
-            stateSettingCallback(view, office, result.data); // <-- `test_data` here can be simply replaced by `result.data` in prod!
-          })
-          .catch(err => {
-            console.error(err);
-          });
-      } else {
-        return axios
-          .get(URL, {
-            // mock URL, can be simply replaced by `${Real_Production_URL}/summary` in prod!
-            params: {
-              from: years[0],
-              to: years[1],
-              office: office,
-            },
-          })
-          .then(result => {
-            stateSettingCallback(view, office, result.data); // <-- `test_data` here can be simply replaced by `result.data` in prod!
-          })
-          .catch(err => {
-            console.error(err);
-          });
-      }
+      return axios
+        .get(URL, {
+          params: {
+            from: years[0],
+            to: years[1],
+          },
+        })
+        .then(res => {
+          console.log(res.data);
+          stateSettingCallback(view, office, years, res);
+        })
+        .catch(err => {
+          console.error(err);
+        });
+      // if (office === 'all' || !office) {
+      //   return axios
+      //     .get(URL, {
+      //       // mock URL, can be simply replaced by `${Real_Production_URL}/summary` in prod!
+      //       params: {
+      //         from: years[0],
+      //         to: years[1],
+      //       },
+      //     })
+      //     .then(result => {
+      //       stateSettingCallback(view, office, result.data); // <-- `test_data` here can be simply replaced by `result.data` in prod!
+      //     })
+      //     .catch(err => {
+      //       console.error(err);
+      //     });
+      // } else {
+      //   return axios
+      //     .get(URL, {
+      //       // mock URL, can be simply replaced by `${Real_Production_URL}/summary` in prod!
+      //       params: {
+      //         from: years[0],
+      //         to: years[1],
+      //         office: office,
+      //       },
+      //     })
+      //     .then(result => {
+      //       stateSettingCallback(view, office, result.data); // <-- `test_data` here can be simply replaced by `result.data` in prod!
+      //     })
+      //     .catch(err => {
+      //       console.error(err);
+      //     });
+      // }
     }
     getAllData(real_URLs)
       .then(res => {
