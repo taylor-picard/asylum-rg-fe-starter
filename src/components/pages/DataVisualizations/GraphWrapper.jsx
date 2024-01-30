@@ -19,6 +19,7 @@ const real_URLs = [
   `https://hrf-asylum-be-b.herokuapp.com/cases/fiscalSummary`,
   `https://hrf-asylum-be-b.herokuapp.com/cases/citizenshipSummary`,
 ];
+let real_data = [];
 
 function GraphWrapper(props) {
   const { set_view, dispatch } = props;
@@ -89,8 +90,8 @@ function GraphWrapper(props) {
           },
         })
         .then(res => {
-          console.log(res.data);
-          stateSettingCallback(view, office, years, res);
+          real_data.push(res.data);
+          console.log(real_data);
         })
         .catch(err => {
           console.error(err);
@@ -130,7 +131,7 @@ function GraphWrapper(props) {
     }
     getAllData(real_URLs)
       .then(res => {
-        console.log(res);
+        stateSettingCallback(view, office, years, real_data);
       })
       .catch(e => {
         console.log(e);
