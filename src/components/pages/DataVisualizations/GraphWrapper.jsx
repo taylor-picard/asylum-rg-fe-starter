@@ -15,11 +15,6 @@ import { colors } from '../../../styles/data_vis_colors';
 import ScrollToTopOnMount from '../../../utils/scrollToTopOnMount';
 
 const { background_color } = colors;
-const real_URLs = [
-  `https://hrf-asylum-be-b.herokuapp.com/cases/fiscalSummary`,
-  `https://hrf-asylum-be-b.herokuapp.com/cases/citizenshipSummary`,
-];
-let real_data = [];
 
 function GraphWrapper(props) {
   const { set_view, dispatch } = props;
@@ -77,65 +72,48 @@ function GraphWrapper(props) {
                                    -- Mack 
     
     */
-    async function getAllData(URLs) {
-      return Promise.all(URLs.map(fetchData));
-    }
 
-    function fetchData(URL) {
-      return axios
-        .get(URL, {
-          params: {
-            from: years[0],
-            to: years[1],
-          },
-        })
-        .then(res => {
-          real_data.push(res.data);
-          console.log(real_data);
+    const fetchData1 = () =>
+      axios.get(`https://hrf-asylum-be-b.herokuapp.com/cases/fiscalSummary`);
+    const fetchData2 = () =>
+      axios.get(
+        `https://hrf-asylum-be-b.herokuapp.com/cases/citizenshipSummary`
+      );
+
+    async function getAllData() {
+      try {
+        const [fiscalData, citizenData] = await Promise.all([
+          fetchData1(),
+          fetchData2(),
+        ]);
+        const combinedData = {
+          yearResults: fiscalData.data.yearResults,
+          citizenshipResults: citizenData.data,
+        };
+        return combinedData;
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    if (office === 'all' || !office) {
+      getAllData()
+        .then(result => {
+          console.log([result]);
+          stateSettingCallback(view, office, [result]); // <-- `test_data` here can be simply replaced by `result.data` in prod!
         })
         .catch(err => {
           console.error(err);
         });
-      // if (office === 'all' || !office) {
-      //   return axios
-      //     .get(URL, {
-      //       // mock URL, can be simply replaced by `${Real_Production_URL}/summary` in prod!
-      //       params: {
-      //         from: years[0],
-      //         to: years[1],
-      //       },
-      //     })
-      //     .then(result => {
-      //       stateSettingCallback(view, office, result.data); // <-- `test_data` here can be simply replaced by `result.data` in prod!
-      //     })
-      //     .catch(err => {
-      //       console.error(err);
-      //     });
-      // } else {
-      //   return axios
-      //     .get(URL, {
-      //       // mock URL, can be simply replaced by `${Real_Production_URL}/summary` in prod!
-      //       params: {
-      //         from: years[0],
-      //         to: years[1],
-      //         office: office,
-      //       },
-      //     })
-      //     .then(result => {
-      //       stateSettingCallback(view, office, result.data); // <-- `test_data` here can be simply replaced by `result.data` in prod!
-      //     })
-      //     .catch(err => {
-      //       console.error(err);
-      //     });
-      // }
+    } else {
+      getAllData()
+        .then(result => {
+          console.log([result]);
+          stateSettingCallback(view, office, [result]); // <-- `test_data` here can be simply replaced by `result.data` in prod!
+        })
+        .catch(err => {
+          console.error(err);
+        });
     }
-    getAllData(real_URLs)
-      .then(res => {
-        stateSettingCallback(view, office, years, real_data);
-      })
-      .catch(e => {
-        console.log(e);
-      });
   }
   const clearQuery = (view, office) => {
     dispatch(resetVisualizationQuery(view, office));
@@ -174,5 +152,4 @@ function GraphWrapper(props) {
     </div>
   );
 }
-
 export default connect()(GraphWrapper);
