@@ -98,7 +98,6 @@ function GraphWrapper(props) {
     if (office === 'all' || !office) {
       getAllData()
         .then(result => {
-          console.log([result]);
           stateSettingCallback(view, office, [result]); // <-- `test_data` here can be simply replaced by `result.data` in prod!
         })
         .catch(err => {
@@ -107,7 +106,6 @@ function GraphWrapper(props) {
     } else {
       getAllData()
         .then(result => {
-          console.log([result]);
           stateSettingCallback(view, office, [result]); // <-- `test_data` here can be simply replaced by `result.data` in prod!
         })
         .catch(err => {
