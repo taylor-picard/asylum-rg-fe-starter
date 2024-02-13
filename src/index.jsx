@@ -6,6 +6,7 @@ import {
   // useHistory,
   Switch,
 } from 'react-router-dom';
+import { Auth0Provider } from '@auth0/auth0-react';
 
 import 'antd/dist/antd.less';
 import { NotFoundPage } from './components/pages/NotFound';
@@ -30,7 +31,12 @@ ReactDOM.render(
   <Router>
     <Provider store={store}>
       <React.StrictMode>
-        <App />
+        <Auth0Provider
+          domain="dev-75uokgs5fzvh32nt.us.auth0.com"
+          clientId="Z4A7J0MnCVrVGOVKxn9JrrexEq8Ls62O"
+        >
+          <App />
+        </Auth0Provider>
       </React.StrictMode>
     </Provider>
   </Router>,
