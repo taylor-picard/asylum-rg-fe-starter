@@ -6,6 +6,10 @@ const LoginButton = () => {
   return (
     <button
       className="btn btn-primary btn-block"
+      style={{
+        backgroundColor: '#404C4A',
+        border: 'none',
+      }}
       onClick={() => loginWithRedirect()}
     >
       Log In

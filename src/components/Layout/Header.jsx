@@ -13,6 +13,7 @@ function HeaderContent() {
       style={{
         display: 'flex',
         justifyContent: 'space-between',
+        paddingTop: '3%',
         width: '100%',
         backgroundColor: primary_accent_color,
       }}
@@ -22,8 +23,15 @@ function HeaderContent() {
           <Image width={100} src={Logo} preview={false} alt="HRF logo white" />
         </a>
       </div>
-      <div className="nav-bar">
-        <Link to="/" style={{ color: '#E2F0F7', paddingRight: '75px' }}>
+      <div
+        className="nav-bar"
+        style={{
+          display: 'flex',
+          justifyContent: 'space-evenly',
+          width: '20%',
+        }}
+      >
+        <Link to="/" style={{ color: '#E2F0F7' }}>
           Home
         </Link>
         <Link to="/graphs" style={{ color: '#E2F0F7' }}>

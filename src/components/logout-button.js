@@ -6,6 +6,10 @@ const LogoutButton = () => {
   return (
     <button
       className="btn btn-danger btn-block"
+      style={{
+        backgroundColor: '#404C4A',
+        border: 'none',
+      }}
       onClick={() =>
         logout({
           returnTo: window.location.origin,
