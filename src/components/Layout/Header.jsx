@@ -21,14 +21,7 @@ function HeaderContent() {
           <Image width={100} src={Logo} preview={false} alt="HRF logo white" />
         </a>
       </div>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-evenly',
-
-          width: '25%',
-        }}
-      >
+      <div>
         <NavTypeVisible />
       </div>
     </div>

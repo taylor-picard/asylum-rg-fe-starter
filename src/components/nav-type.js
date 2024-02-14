@@ -12,16 +12,16 @@ const loggedIn = () => {
       style={{
         display: 'flex',
         justifyContent: 'space-evenly',
-        width: '20%',
+        width: '100%',
       }}
     >
-      <Link to="/" style={{ color: '#E2F0F7' }}>
+      <Link to="/" style={{ color: '#E2F0F7', padding: '0 1rem' }}>
         Home
       </Link>
-      <Link to="/graphs" style={{ color: '#E2F0F7' }}>
+      <Link to="/graphs" style={{ color: '#E2F0F7', padding: '0 1rem' }}>
         Graphs
       </Link>
-      <Link to="/profile" style={{ color: '#E2F0F7' }}>
+      <Link to="/profile" style={{ color: '#E2F0F7', padding: '0 1rem' }}>
         Profile
       </Link>
       <AuthNav />
@@ -36,13 +36,13 @@ const loggedOut = () => {
       style={{
         display: 'flex',
         justifyContent: 'space-evenly',
-        width: '20%',
+        width: '100%',
       }}
     >
-      <Link to="/" style={{ color: '#E2F0F7' }}>
+      <Link to="/" style={{ color: '#E2F0F7', padding: '0 1rem' }}>
         Home
       </Link>
-      <Link to="/graphs" style={{ color: '#E2F0F7' }}>
+      <Link to="/graphs" style={{ color: '#E2F0F7', padding: '0 1rem' }}>
         Graphs
       </Link>
       <AuthNav />
