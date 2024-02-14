@@ -7,7 +7,13 @@ const Profile = () => {
   const { name, picture, email } = user;
 
   return (
-    <div>
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        padding: '10%',
+      }}
+    >
       <div className="row align-items-center profile-header">
         <div className="col-md-2 mb-3">
           <img

@@ -13,7 +13,6 @@ function HeaderContent() {
       style={{
         display: 'flex',
         justifyContent: 'space-between',
-        paddingTop: '3%',
         width: '100%',
         backgroundColor: primary_accent_color,
       }}
@@ -37,7 +36,9 @@ function HeaderContent() {
         <Link to="/graphs" style={{ color: '#E2F0F7' }}>
           Graphs
         </Link>
-        <Link to="/profile">Profile</Link>
+        <Link to="/profile" style={{ color: '#E2F0F7' }}>
+          Profile
+        </Link>
         <AuthNav />
       </div>
     </div>
