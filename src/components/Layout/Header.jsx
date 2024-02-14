@@ -1,9 +1,8 @@
 import React from 'react';
 import { Image } from 'antd';
-import { Link } from 'react-router-dom';
 import Logo from '../../styles/Images/WhiteLogo.png';
 import { colors } from '../../styles/data_vis_colors';
-import AuthNav from '../auth-nav';
+import NavTypeVisible from '../nav-type';
 
 const { primary_accent_color } = colors;
 
@@ -23,23 +22,14 @@ function HeaderContent() {
         </a>
       </div>
       <div
-        className="nav-bar"
         style={{
           display: 'flex',
           justifyContent: 'space-evenly',
-          width: '20%',
+
+          width: '25%',
         }}
       >
-        <Link to="/" style={{ color: '#E2F0F7' }}>
-          Home
-        </Link>
-        <Link to="/graphs" style={{ color: '#E2F0F7' }}>
-          Graphs
-        </Link>
-        <Link to="/profile" style={{ color: '#E2F0F7' }}>
-          Profile
-        </Link>
-        <AuthNav />
+        <NavTypeVisible />
       </div>
     </div>
   );
